@@ -1,0 +1,27 @@
+---
+const { videos } = Astro.props;
+import VideoEmbed from "./VideoEmbed.astro";
+---
+
+<div class="video-grid">
+    {videos.map(video => (
+        <VideoEmbed
+            src={video.src}
+            title={video.title}
+        />
+    ))}
+</div>
+
+<style>
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 800px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

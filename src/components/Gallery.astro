@@ -1,0 +1,158 @@
+---
+const { images } = Astro.props;
+
+const id = "gallery-" + Math.random().toString(36).substring(2, 10);
+---
+
+<div class="gallery" id={id}>
+    {images.map((src, index) => (
+        <img
+            src={src}
+            alt=""
+            loading="lazy"
+            data-index={index}
+        />
+    ))}
+</div>
+
+<div class="lightbox" id={`${id}-lightbox`} hidden>
+    <button class="prev" aria-label="Previous">&#10094;</button>
+
+    <img class="lightbox-image" alt="">
+
+    <button class="next" aria-label="Next">&#10095;</button>
+</div>
+
+
+<style>
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 3rem 0;
+}
+
+.gallery img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+
+    cursor: pointer;
+
+    transition: transform .2s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.9);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox-image {
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.prev,
+.next {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: none;
+    border: 0;
+
+    color: white;
+
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.prev {
+    left: 2rem;
+}
+
+.next {
+    right: 2rem;
+}
+</style>
+
+
+<script is:inline define:vars={{ id, images }}>
+{
+    const gallery = document.querySelector(`#${id}`);
+    const lightbox = document.querySelector(`#${id}-lightbox`);
+
+    const lightboxImage = lightbox.querySelector(".lightbox-image");
+    const prev = lightbox.querySelector(".prev");
+    const next = lightbox.querySelector(".next");
+
+    let current = 0;
+
+
+    function show(index) {
+        current = (index + images.length) % images.length;
+        lightboxImage.src = images[current];
+        lightbox.hidden = false;
+    }
+
+
+    gallery.querySelectorAll("img").forEach((img, index) => {
+        img.addEventListener("click", () => {
+            show(index);
+        });
+    });
+
+
+    prev.addEventListener("click", (event) => {
+        event.stopPropagation();
+        show(current - 1);
+    });
+
+
+    next.addEventListener("click", (event) => {
+        event.stopPropagation();
+        show(current + 1);
+    });
+
+
+    lightbox.addEventListener("click", () => {
+        lightbox.hidden = true;
+    });
+
+
+    document.addEventListener("keydown", (event) => {
+
+        if (lightbox.hidden) return;
+
+        if (event.key === "Escape") {
+            lightbox.hidden = true;
+        }
+
+        if (event.key === "ArrowLeft") {
+            show(current - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+            show(current + 1);
+        }
+
+    });
+}
+</script>

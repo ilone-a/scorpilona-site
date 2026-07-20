@@ -1,0 +1,29 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const { title = "Scorpilona" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+</head>
+
+<body>
+
+<Header />
+
+<main>
+    <slot />
+</main>
+
+<Footer />
+
+</body>
+</html>
+

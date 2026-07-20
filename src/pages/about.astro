@@ -1,0 +1,33 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const user = "scorpilona.site";
+const host = "gmail.com";
+const email = `${user}@${host}`;
+---
+
+<MainLayout title="About">
+
+<section class="about">
+
+    <img
+        src="/images/about.jpg"
+        alt="Ilona Alekseeva"
+        class="about-photo"
+    />
+
+    <div class="about-info">
+
+        <h1>Ilona Alekseeva</h1>
+
+        <p>software developer || urban explorer</p>
+
+        <a href={`mailto:${email}`}>
+            {email}
+        </a>
+
+    </div>
+
+</section>
+
+</MainLayout>

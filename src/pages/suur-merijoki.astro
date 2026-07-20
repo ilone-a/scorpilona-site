@@ -1,0 +1,109 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
+import Gallery from "../components/Gallery.astro";
+import InternalLink from "../components/InternalLink.astro";
+import CustomLink from "../components/CustomLink.astro";
+import VideoGrid from "../components/VideoGrid.astro";
+import VideoEmbed from "../components/VideoEmbed.astro";
+---
+
+<MainLayout title="SUUR-MERIJOKI">
+    <Hero
+        title="SUUR-MERIJOKI"
+        subtitle="Visualization project"
+        image="/images/suur/h1.png"
+    />
+
+    <section class="content">
+        <p>
+            Suur-Merijoki manor house was built in 1902–1903 near Vyborg by
+            Eliel Saarinen, Herman Gesellius and Armas Lindgren.
+        </p>
+
+        <p>
+            The owner of the estate was Maximilian Othmar Neuscheller, a
+            Swiss-born manufacturer based in St. Petersburg. The main building
+            of the manor was one of the finest examples of Finnish National
+            Romantic architecture.
+        </p>
+
+        <p>
+            In 1927, the Finnish state acquired the Suur-Merijoki estate and it was
+            used by the Finnish Air Force. <br /> The creation of the airfield was
+            completed in 1929, and the manor became the officers' club.
+        </p>
+
+        <p>
+            Suur-Merijoki Manor was bombed during the Winter War and was later almost
+            completely destroyed.
+        </p>
+        <p>
+
+            I tried to imagine what the manor might have looked like if it hadn't
+            been destroyed. I used Unreal Engine 5 and many other visualization tools.
+        </p>
+
+    <p>Interiors panorama: <InternalLink href="/panorama" /></p>
+
+    <Gallery
+        images={[
+            "/images/suur/HighresScreenshot000.jpg",
+            "/images/suur/HighresScreenshot000 (1).jpg",
+            "/images/suur/HighresScreenshot000 (2).jpg",
+            "/images/suur/HighresScreenshot000 (3).jpg",
+            "/images/suur/HighresScreenshot000 (4).jpg",
+            "/images/suur/HighresScreenshot132.jpg",
+        ]}
+    />
+    <VideoEmbed src="https://www.youtube.com/embed/HxniPVe0QDw" , title=""  />
+
+    <p>        <br />
+        Old and new photo references:
+    </p>
+    <Gallery
+        images={[
+            "/images/suur/IMG_3151.jpg",
+            "/images/suur/photo_2022-07-30_01-.jpg",
+            "/images/suur/P2cDnxngSZo.jpg",
+            "/images/suur/A5mKH3GFQV4.jpg",
+            "/images/suur/sa-kuva_47376_Suur-M.jpg",
+            "/images/suur/10AED0B87EC9F8F49D8A.jpg",
+            "/images/suur/62743393CFADCFC997B5.jpg",
+        ]}
+    />
+    <p>
+        Photos source: 1-2: my own archive, 3-5: sa-kuva.fi, 6-7: finna.fi.<br
+        />
+    </p>
+
+    <VideoGrid
+        videos={[
+            {
+                src: "https://www.youtube.com/embed/zCyWyx-CJfE",
+                title: "Virtual memorial museum - teaser",
+            },
+            {
+                src: "https://www.youtube.com/embed/c6WI3Gg_fKM",
+                title: "",
+            },
+        ]}
+    />
+    <p>
+        <br />
+        ...and also used Unity to create AR app.
+    </p>
+    <VideoEmbed src="https://www.youtube.com/embed/-gFXDBHK84U" , title="" , />
+    <Gallery images={["/images/suur/photo_2024-06-30_19-.jpg"]} />
+    <p>
+        <br />
+        Manor plan source: Rakentaja, 01.03.1904, no. 2, p. 3 <br />
+        <CustomLink
+      href="https://digi.kansalliskirjasto.fi/aikakausi/binding/1124516?page=3"
+      text="National Library's Digital Collections"
+    />
+        <br/>
+        Cited:02.07.2024
+    </p>
+        </section>
+</MainLayout>

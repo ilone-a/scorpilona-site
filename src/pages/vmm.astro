@@ -1,0 +1,56 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
+import VideoGrid from "../components/VideoGrid.astro";
+import SimpleLink from "../components/SimpleLink.astro";
+import CustomLink from "../components/CustomLink.astro";
+---
+
+<MainLayout title="NIERNSEE MUSEUM">
+  <Hero
+    title="МУЗЕЙ ОДНОГО АРХИТЕКТОРА"
+    subtitle="виртуальный мемориальный"
+    image="/images/vmm/1230(1)-Cover.jpg"
+  />
+
+  <p>
+    //в разработке. <br />Симулятор музея, посвящённого снесённым в 2015 домам
+    Привалова <CustomLink
+      href="https://www.archnadzor.ru/2010/03/17/muzej-odnogo-arhitektora/"
+      text="домам
+    Привалова"
+    /> на Садовнической улице.
+    <br />Я придумала его, чтобы сохранить память об этих заброшенных доходных
+    домах, об архитекторе Нирнзее и частичке той старой Москвы, которой больше
+    нет.
+   <br />Сделан на C++/Unreal Engine с помощью моего же плагина для
+    анрила <CustomLink
+      href="https://github.com/ilone-a/abstractmuseum"
+      text="AbstractMuseum"
+    />.
+  </p>
+  <p>
+    <br />
+    Демо-версия, прохождение: <SimpleLink
+      href="https://youtu.be/umOYVrIs4Uo"
+    /><br />
+  </p>
+  <p>
+    <br />Копия видео с ютуба на vimeo на случай блокировок: <br />
+    <br />
+  </p>
+  <SimpleLink href="https://vimeo.com/1178027957" /><br />
+  <SimpleLink href="https://vimeo.com/1178028517" /><br /><br />
+  <VideoGrid
+    videos={[
+      {
+        src: "https://www.youtube.com/embed/xKuJEEUY0RE",
+        title: "Virtual memorial museum - teaser",
+      },
+      {
+        src: "https://www.youtube.com/embed/KDpYTSXONzk",
+        title: "Teaser 2",
+      },
+    ]}
+  />
+</MainLayout>

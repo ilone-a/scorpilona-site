@@ -1,0 +1,228 @@
+<link rel="stylesheet" href="/pannellum/build/pannellum.css">
+
+<div id="panorama"></div>
+<script is:inline src="/pannellum/build/libpannellum.js"></script>
+<script is:inline src="/pannellum/build/pannellum.js"></script>
+
+решаем проблему по кусочкам.
+как сделать панораму с одной сценой, любым файлом просто?
+щас так
+<link rel="stylesheet" href="/pannellum/build/pannellum.css">
+
+<div id="panorama"></div>
+
+<script is:inline src="/pannellum/build/pannellum.js"></script>
+
+<script is:inline>
+    const scenes = {
+        gallery: {
+            type: "equirectangular",
+            panorama: "/images/suur/pano/gallery.jpg",
+            title: "Gallery",
+            minPitch: -30,
+            maxPitch: 30,
+
+            hotSpots: [
+                {
+                    pitch: 0,
+                    yaw: 180,
+                    type: "scene",
+                    text: "Music room",
+                    sceneId: "musicRoom",
+                    targetYaw: 180
+                }
+            ]
+        },
+
+        musicRoom: {
+            type: "equirectangular",
+            panorama: "/images/suur/pano/music-room.jpg",
+            title: "Music room",
+            minPitch: -30,
+            maxPitch: 30,
+
+            hotSpots: [
+                {
+                    pitch: 0,
+                    yaw: 0,
+                    type: "scene",
+                    text: "Gallery",
+                    sceneId: "gallery"
+                },
+
+                {
+                    pitch: 0,
+                    yaw: 180,
+                    text: "Main hall",
+                    type: "scene",
+                    sceneId: "mainHall",
+                    targetYaw: 180
+                }
+            ]
+        },
+
+        mainHall: {
+            type: "equirectangular",
+            panorama: "/images/suur/pano/main-hall.jpg",
+            title: "Main hall",
+
+            yaw: 115,
+
+            minPitch: -30,
+            maxPitch: 30,
+
+            hotSpots: [
+
+                {
+                    pitch: 0,
+                    yaw: -125,
+                    text: "Fireplace",
+                    type: "scene",
+                    sceneId: "fireplace"
+                },
+
+                {
+                    pitch: 0,
+                    yaw: 0,
+                    text: "Music room",
+                    type: "scene",
+                    sceneId: "musicRoom"
+                },
+
+                {
+                    pitch: 0,
+                    yaw: 317,
+                    text: "Boudoir",
+                    type: "scene",
+                    sceneId: "boudoir"
+                },
+
+                {
+                    pitch: 0,
+                    yaw: 65,
+                    text: "Library",
+                    type: "scene",
+                    sceneId: "library",
+                    targetYaw: 55
+                }
+
+            ]
+        },
+
+        fireplace: {
+
+            type: "equirectangular",
+
+            panorama: "/images/suur/pano/fireplace.jpg",
+
+            title: "Fireplace",
+
+            yaw: -90,
+
+            minPitch: -30,
+            maxPitch: 30,
+
+            hotSpots: [
+
+                {
+                    pitch: 0,
+                    yaw: 20,
+                    type: "scene",
+                    text: "Main hall",
+                    sceneId: "mainHall",
+                    targetYaw: 75
+                },
+
+                {
+                    pitch: 0,
+                    yaw: 0,
+                    type: "scene",
+                    text: "Boudoir",
+                    sceneId: "boudoir",
+                    targetYaw: 75
+                }
+
+            ]
+        },
+
+        boudoir: {
+
+            type: "equirectangular",
+
+            panorama: "/images/suur/pano/boudoir.jpg",
+
+            title: "Boudoir",
+
+            minPitch: -30,
+            maxPitch: 30,
+
+            hotSpots: [
+
+                {
+                    pitch: 0,
+                    yaw: 130,
+                    type: "scene",
+                    text: "Main hall",
+                    sceneId: "mainHall"
+                }
+
+            ]
+        },
+
+        library: {
+
+            type: "equirectangular",
+
+            panorama: "/images/suur/pano/library.jpg",
+
+            title: "Library",
+
+            minPitch: -30,
+            maxPitch: 30,
+
+            hotSpots: [
+
+                {
+                    pitch: 0,
+                    yaw: -127,
+                    type: "scene",
+                    text: "Main hall",
+                    sceneId: "mainHall",
+                    targetYaw: -115
+                }
+
+            ]
+        }
+
+    };
+
+    pannellum.viewer("panorama", {
+
+        default: {
+
+            firstScene: "fireplace",
+            sceneFadeDuration: 1000,
+
+        },
+
+        scenes
+
+    });
+
+</script>
+
+<style>
+
+#panorama {
+
+    width:100%;
+
+    height:min(75vw,800px);
+
+    border:1px solid #444;
+
+    margin-top:20px;
+
+}
+
+</style>
