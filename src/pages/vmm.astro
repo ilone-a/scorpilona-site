@@ -31,9 +31,33 @@ import VideoEmbed from "../components/VideoEmbed.astro";
   </p>
   <p>
     <br />
-    Демо-версия, прохождение: <SimpleLink
-      href="https://youtu.be/umOYVrIs4Uo"
-    /><br />
+<br />
+  
+  
+      <VideoGrid
+        videos={[
+            {
+                src: "https://www.youtube.com/embed/KDpYTSXONzk",
+                title: "Тизер игры-музея: первый",
+            },
+            {
+                src: "https://www.youtube.com/embed/xKuJEEUY0RE",
+                title: "Второй",
+            },
+        ]}
+    />
+          <VideoGrid
+        videos={[
+            {
+                src: "https://www.youtube.com/embed/8a6byStnvo8",
+                title: "Третий",
+            },
+            {
+                src: "https://www.youtube.com/embed/Wq_cjNpphTA",
+                title: "Прохождение",
+            },
+        ]}
+    />
   </p>
   <p>
     <br />Копия видео с ютуба на vimeo на случай блокировок: <br />
@@ -41,17 +65,5 @@ import VideoEmbed from "../components/VideoEmbed.astro";
   </p>
   <SimpleLink href="https://vimeo.com/1178027957" /><br />
   <SimpleLink href="https://vimeo.com/1178028517" /><br /><br />
-  <VideoGrid
-    videos={[
-      {
-        src: "https://www.youtube.com/embed/xKuJEEUY0RE",
-        title: "Virtual memorial museum - teaser",
-      },
-      {
-        src: "https://www.youtube.com/embed/KDpYTSXONzk",
-        title: "Teaser 2",
-      },
-    ]}
-  />
-  <VideoEmbed src="https://www.youtube.com/embed/8a6byStnvo8" , title=""  />
+
 </MainLayout>
